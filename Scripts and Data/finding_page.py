@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-im = cv2.imread("./Data/blank_simple (4).jpg")
+im = cv2.imread("./Data/blank_simple (1).jpg")
 im_name = cv2.resize(im, (700, 700))
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
 edge = cv2.Canny(gray, 100, 200, apertureSize=3)
