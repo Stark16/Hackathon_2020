@@ -18,7 +18,10 @@ max_index = np.where(area_cont == max_area)
 print(max_area)
 print(max_index)
 
+page = np.empty_like(gray)
+print(page)
+cv2.drawContours(page, item, max_index[0], (255, 255, 255), 3)
 cv2.drawContours(im_name, item, max_index[0], (0, 255, 0), 3)
-
-cv2.imshow("Contour", im_name)
+cv2.imshow("Contour", page)
+cv2.imshow("Image", im_name)
 cv2.waitKey(0)
