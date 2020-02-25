@@ -18,8 +18,6 @@ for con in item:
 
 max_area = np.amax(area_cont)
 max_index = np.where(area_cont == max_area)
-print(max_area)
-
 
 cv2.drawContours(im_name, item, max_index[0] , (0,255,0), 3)
 
