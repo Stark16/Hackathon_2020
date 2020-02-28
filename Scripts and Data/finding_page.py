@@ -5,6 +5,7 @@ import numpy as np
 im = cv2.imread("./Data/blank_simple (1).jpg")
 im_name = cv2.resize(im, (700, 700))
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
+
 edge = cv2.Canny(gray, 100, 200, apertureSize=3)
 
 
@@ -20,7 +21,7 @@ for con in item:
 
 max_area = np.amax(area_cont)
 max_index = np.where(area_cont == max_area)
-print(max_area)
+#print(item[max_index[0]])
 
 
 cv2.drawContours(im_name, item, max_index[0] , (0,255,0), 3)
