@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 
-im = cv2.imread("./Data/blank_simple (1).jpg")
+im = cv2.imread("./Data/blank_simple (5).jpg")
 im_name = cv2.resize(im, (700, 700))
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
 
@@ -21,10 +21,20 @@ for con in item:
 
 max_area = np.amax(area_cont)
 max_index = np.where(area_cont == max_area)
-#print(item[max_index[0]])
+
+page = np.empty_like(gray)
+
+cv2.drawContours(page, item, max_index[0], (255, 255, 255), 1)
+cv2.drawContours(im_name, item, max_index[0], (0, 255, 0), 1)
+
+corners = cv2.goodFeaturesToTrack(page, 4, 0.1, 60)
+corners = np.int0(corners)
 
 
-cv2.drawContours(im_name, item, max_index[0] , (0,255,0), 3)
-cv2.imshow("Adaptive", edge)
-cv2.imshow("cont", im_name)
+for corner in corners:
+    x, y = corner.ravel()
+    cv2.circle(page, (x, y), 6, (200, 255, 0), -1)
+cv2.imshow("Image", im_name)
+cv2.imshow("edge", edge)
+cv2.imshow("Page", page)
 cv2.waitKey(0)
