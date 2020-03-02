@@ -37,5 +37,6 @@ for i in range(4):
     lines.append([(x1, y1),  (x2, y2)])
     cv2.line(im_name, (x1, y1), (x2, y2), (255, 255, 0), 3)
 
+print(lines)
 cv2.imshow("pic", im_name)
 cv2.waitKey(0)
