@@ -28,10 +28,6 @@ corners = cv2.goodFeaturesToTrack(page, 4, 0.01, 60)
 # print(corners)
 hull = cv2.convexHull(corners, clockwise=True)
 
-h_lines = []
-v_lines = []
-right_bottom = []
-lef_bottom = []
 for i in range(4):
     x1, y1 = hull[i].ravel()
 
@@ -45,7 +41,6 @@ for i in range(4):
 
     if x_slope > y_slope:
         print("Horizontal")
-        h_lines.append([x1, y1, x2, y2])
 
         if x1 < x2:
             print("Bottom line")
@@ -58,7 +53,6 @@ for i in range(4):
 
     elif y_slope > x_slope:
         print("Vertical")
-        v_lines.append([x1, y1, x2, y2])
 
         if y1 < y2:
             print("Left line")
@@ -73,5 +67,5 @@ cv2.circle(im_name, right_bottom, 6, (0, 0, 255), 3)
 cv2.circle(im_name, left_bottom, 6, (0, 0, 0,), 3)
 cv2.imshow("pic", im_name)
 # cv2.imshow("page", page)
-cv2.imshow("edge", edge)
+# cv2.imshow("edge", edge)
 cv2.waitKey(0)
