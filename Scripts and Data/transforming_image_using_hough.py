@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from matplotlib import pyplot
+#from matplotlib import pyplot
 im_name = cv2.imread("./Data/blank_simple (2).jpg")
 im_name = cv2.resize(im_name, (700, 700), interpolation=True)
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
