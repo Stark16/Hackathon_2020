@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from matplotlib import  pyplot as plt
+from matplotlib import pyplot as plt
 
 im_name = cv2.imread("./Data/filled_sample.jpg")
 im_name = cv2.resize(im_name, (700, 700), interpolation=True)
@@ -41,19 +41,20 @@ for i in range(4):
     y_slope = abs(y2 - y1)
 
     if x_slope > y_slope:
-        print("Horizontal")
+        #print("Horizontal")
 
         if x1 < x2:
-            print("Bottom line")
+            #print("Bottom line")
             left_bottom = (x1, y1)
             right_bottom = (x2, y2)
         elif x1 > x2:
-            print("Top Line")
+            #print("Top Line")
             right_top = (x1, y1)
             left_top = (x2, y2)
 
 
-# Performing affine transform:
+
+# Performing Geometrical transform:
 
 pt1 = np.float32([[left_top], [right_top], [left_bottom], [right_bottom]])
 pt2 = np.float32([[0, 0], [700, 0], [0, 700], [700, 700]])
