@@ -41,24 +41,17 @@ for i in range(4):
     y_slope = abs(y2 - y1)
 
     if x_slope > y_slope:
-        print("Horizontal")
+        #print("Horizontal")
 
         if x1 < x2:
-            print("Bottom line")
+            #print("Bottom line")
             left_bottom = (x1, y1)
             right_bottom = (x2, y2)
         elif x1 > x2:
-            print("Top Line")
+            #print("Top Line")
             right_top = (x1, y1)
             left_top = (x2, y2)
 
-    elif y_slope > x_slope:
-        print("Vertical")
-
-        if y1 < y2:
-            print("Left line")
-        elif y1 > y2:
-            print("Right line")
 
 
 # Performing Geometrical transform:

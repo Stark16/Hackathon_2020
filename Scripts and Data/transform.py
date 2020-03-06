@@ -52,14 +52,6 @@ for i in range(4):
             right_top = (x1, y1)
             left_top = (x2, y2)
 
-    elif y_slope > x_slope:
-        print("Vertical")
-
-        if y1 < y2:
-            print("Left line")
-        elif y1 > y2:
-            print("Right line")
-
 
 # Performing affine transform:
 
