@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from matplotlib import  pyplot as plt
+from matplotlib import pyplot as plt
 
 im_name = cv2.imread("./Data/filled_sample.jpg")
 im_name = cv2.resize(im_name, (700, 700), interpolation=True)
@@ -51,6 +51,14 @@ for i in range(4):
             print("Top Line")
             right_top = (x1, y1)
             left_top = (x2, y2)
+
+    elif y_slope > x_slope:
+        print("Vertical")
+
+        if y1 < y2:
+            print("Left line")
+        elif y1 > y2:
+            print("Right line")
 
 
 # Performing affine transform:
