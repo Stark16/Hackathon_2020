@@ -7,14 +7,13 @@ og_image = im_name.copy()
 og_dim = (og_image.shape[0], og_image.shape[1])
 new_dim = (int(og_dim[0]/3), int(og_dim[1]/3))
 
-#im_name = cv2.resize(im_name, new_dim)
+im_name = cv2.resize(im_name, new_dim)
 print(im_name.shape[0], new_dim[0], og_dim)
 
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
-gray = cv2.GaussianBlur(gray, (3, 3), 0)
+# gray = cv2.GaussianBlur(gray, (3, 3), 0)
 edge = cv2.Canny(gray, 100, 500, apertureSize=3)
-plt.imshow(edge)
-plt.show()
+
 # cv2.waitKey(0)
 item, hierarchy = cv2.findContours(edge, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
