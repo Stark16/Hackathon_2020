@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
-from matplotlib import  pyplot as plt
+import imutils
 
-im_name = cv2.imread("./Data/noisy_bill 1.jpg")
+im_name = cv2.imread("./Data/blank_simple (2).jpg")
+im = im_name.copy()
+
 im_name = cv2.resize(im_name, (700, 700), interpolation=True)
 gray = cv2.cvtColor(im_name, cv2.COLOR_BGR2GRAY)
 
@@ -63,11 +65,12 @@ for i in range(4):
 
 # Performing affine transform:
 
-pt1 = np.float32([[left_top], [right_top], [left_bottom]])
-pt2 = np.float32([[0, 0], [700, 0], [0, 700]])
+print(left_bottom, left_top)
+pt1 = np.float32([[left_top], [right_top], [left_bottom], [right_bottom]])
+pt2 = np.float32([[0, 0], [700, 0], [0, 700], [700, 700]])
 
-matrix = cv2.getAffineTransform(pt1, pt2)
-new_image = cv2.warpAffine(im_name, matrix, (700, 700))
+matrix = cv2.getPerspectiveTransform(pt1, pt2)
+new_image = cv2.warpPerspective(im_name, matrix, (700, 700))
 
 # Corners are printed clockwise starting from left top and are colour coded as Blue, Green, Red and black respectively.
 cv2.circle(im_name, left_top, 6, (255, 0, 0), 3)
@@ -75,11 +78,8 @@ cv2.circle(im_name, right_top, 6, (0, 255, 0), 3)
 cv2.circle(im_name, right_bottom, 6, (0, 0, 255), 3)
 cv2.circle(im_name, left_bottom, 6, (0, 0, 0,), 3)
 
-plt.subplot(121),plt.imshow(im_name)
-plt.subplot(122), plt.imshow(new_image)
-plt.show()
-# cv2.imshow("pic", im_name)
-# cv2.imshow("new", new_image)
+cv2.imshow("pic", im_name)
+cv2.imshow("new", new_image)
 # cv2.imshow("page", page)
 # cv2.imshow("edge", edge)
-# cv2.waitKey(0)
+cv2.waitKey(0)
