@@ -1,5 +1,5 @@
 import numpy as np
-
+import pickle
 
 def activation_funct(Yin):
     if Yin > 0:
@@ -9,7 +9,10 @@ def activation_funct(Yin):
     elif Yin < 0:
         return -1
 
-
+def test(x1, x2):
+    Yin = x1*int(weights[0]) + x2*int(weights[1]) + bias
+    Y = activation_funct(Yin)
+    print("Output:", Y)
 ip_mat = np.matrix([
     [1, 1],
     [1, -1],
@@ -48,9 +51,16 @@ while trained != ip_mat.shape[0]:
         else:
             trained += 1
 
-        print("Network O/P:", Yin)
-        print("weights and Bias:", weights, bias)
-        print("Iteration", i + 1)
     epoch += 1
 print("Network Trained!")
 print("Epochs:", epoch)
+print("Final Wights: W1:", int(weights[0]), "W2:", int(weights[1]),"Bias:", bias)
+
+choice = int(input("To test network press 1, To exit press 2"))
+
+if choice == 1:
+    x1 = int(input("Enter 1st bit:"))
+    x2 = int(input("Enter 2nd Bit:"))
+    test(x1, x2)
+else:
+    exit()
